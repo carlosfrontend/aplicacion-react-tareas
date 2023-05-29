@@ -1,11 +1,36 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TareaFormulario from './TareaFormulario';
 import '../stylesheets/ListaDeTareas.css';
 import Tarea from './Tarea';
 
+/* Obtener la lista de tareas almacenadas en localStorage */
+
+const obtenerTareasAlmacenadas = () => {
+
+  let tareasAlmacenadas =  JSON.parse(localStorage.getItem('lista'));
+
+  if(tareasAlmacenadas) {
+
+    return tareasAlmacenadas;
+
+  }else{
+
+    return [];
+
+  };
+};
+
 function ListaDeTareas () {
 
-  const [ tareas,setTareas ] = useState([]);
+  const [ tareas,setTareas ] = useState(obtenerTareasAlmacenadas()); /* Actualiza el estado con las tareas almacenadas */
+
+  /* Guarda las tareas en localStorage con el nombre lista */
+
+  useEffect(()=>{
+
+    localStorage.setItem('lista', JSON.stringify(tareas));
+
+  }, [tareas] );
 
   const  agregarTarea = tarea => {
     console.log(tarea);

@@ -16,16 +16,17 @@ function TareaFormulario (props) {
       texto:input,
       completada: false 
     };
-    props.onSubmit(TareaNueva);
+    props.onSubmit(TareaNueva, setInput(''));
   };
 
   return (
     <form className='tarea-formulario'
       onSubmit={manejarEnvio}
     >
-      <input 
+      <input
         className='tarea-input'
         type='text'
+        value={input}
         placeholder='Escribe una tarea'
         name='texto'
         onChange={manejarCambio}
