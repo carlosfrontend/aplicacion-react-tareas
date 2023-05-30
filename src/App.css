@@ -38,7 +38,7 @@ h1 {
   border-radius: 26px;
 }
 
-/* lista de tareas */
+/* Estilos contenedor de las tareas */
 
 .tareas-lista-contenedor {
   display: flex;
